@@ -17,9 +17,7 @@ body {
     linear-gradient(135deg, #050505 0%, #121212 50%, #050505 100%);
 }
 
-button {
-  font: inherit;
-}
+button { font: inherit; }
 
 .app-shell {
   width: min(1180px, 100%);
@@ -49,15 +47,34 @@ button {
   background: repeating-linear-gradient(0deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 5px);
 }
 
-.hero-topline {
-  display: inline-flex;
+.hero-topline,
+.account-strip,
+.section-title {
+  display: flex;
   gap: 8px;
   align-items: center;
+  text-transform: uppercase;
+}
+
+.hero-topline {
+  display: inline-flex;
   border: 1px solid #f7f7f0;
   padding: 8px 10px;
   margin-bottom: 16px;
   letter-spacing: 0.12em;
   font-size: 0.78rem;
+}
+
+.account-strip {
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.account-strip div {
+  border: 1px dashed rgba(247,247,240,0.72);
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.04);
 }
 
 h1, h2, p { margin-top: 0; }
@@ -85,6 +102,7 @@ h2 {
 
 .panel {
   padding: clamp(16px, 3vw, 28px);
+  margin-bottom: 28px;
 }
 
 .movie-grid {
@@ -96,7 +114,8 @@ h2 {
 .movie-button,
 .choice,
 .next,
-.secondary {
+.secondary,
+.sound-button {
   border: 2px solid #f7f7f0;
   background: #050505;
   color: #f7f7f0;
@@ -104,6 +123,15 @@ h2 {
   padding: 12px 14px;
   cursor: pointer;
   transition: transform 130ms ease, background 130ms ease, color 130ms ease, box-shadow 130ms ease;
+}
+
+.sound-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
 }
 
 .movie-button {
@@ -117,7 +145,8 @@ h2 {
 .movie-button:hover,
 .choice:hover,
 .next:hover,
-.secondary:hover {
+.secondary:hover,
+.sound-button:hover {
   transform: translate(-3px, -3px);
   box-shadow: 5px 5px 0 #f7f7f0;
   background: #f7f7f0;
@@ -126,7 +155,7 @@ h2 {
 
 .game-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 24px;
   align-items: start;
 }
@@ -149,6 +178,7 @@ h2 {
 .score-card p {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   border-bottom: 1px dashed rgba(247,247,240,0.38);
   padding-bottom: 8px;
 }
@@ -167,9 +197,7 @@ h2 {
   text-transform: uppercase;
 }
 
-.timer {
-  animation: pulse 1s steps(2, jump-none) infinite;
-}
+.timer { animation: pulse 1s steps(2, jump-none) infinite; }
 
 @keyframes pulse {
   50% { background: #f7f7f0; color: #050505; }
@@ -230,9 +258,7 @@ h2 {
   color: #050505;
 }
 
-.end-card {
-  text-align: center;
-}
+.end-card { text-align: center; }
 
 .end-actions {
   display: flex;
@@ -241,10 +267,46 @@ h2 {
   flex-wrap: wrap;
 }
 
+.reviews-panel {
+  margin-top: 28px;
+}
+
+.section-title {
+  border-bottom: 2px solid #f7f7f0;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.review-card {
+  border: 1px solid #f7f7f0;
+  padding: 16px;
+  background: rgba(255,255,255,0.035);
+}
+
+.review-card h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.stars {
+  letter-spacing: 0.18em;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 760px) {
   .app-shell { padding: 14px; }
   .hero-card, .panel { box-shadow: 5px 5px 0 #f7f7f0; }
   .game-grid { grid-template-columns: 1fr; }
   .score-card { position: static; }
   .question-meta span { flex: 1; text-align: center; }
+  .movie-grid { grid-template-columns: 1fr; }
+  .account-strip { display: grid; grid-template-columns: 1fr; }
+  .choice, .movie-button, .next, .secondary, .sound-button { min-height: 58px; }
 }
